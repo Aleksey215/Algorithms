@@ -1,3 +1,6 @@
+from random import randint
+
+
 # *** Двоичный поиск ***
 # Алгоритм двоичного поиска является более совершенным, чем линейный поиск,
 # однако он накладывает на структуру сильное ограничение — она должна быть отсортирована.
@@ -23,8 +26,30 @@ def binary_search(arr, elem, left, right):
 
 element = int(input("Enter element: "))
 array = [i for i in range(1, 100)]
+print(array)
 print(binary_search(array, element, 0, 98))
 
 # # Математически доказывается, что сложность такого алгоритма O(log(n)),
 # # а как вы должны помнить из начала этого модуля — логарифмическая сложность намного лучше, чем линейная.
 # # Ура! Мы получили очень эффективный алгоритм поиска. Только вот сортировать нужно…
+
+a = [i for i in range(1, 10)]
+
+
+# Альтернативный способ
+def binary_search_2(arr, item):
+    low = arr[0]
+    high = arr[-1]
+    while low <= high:
+        middle = (low + high) // 2
+        if arr[middle] == item:
+            return middle
+        elif arr[middle] > item:
+            high = middle - 1
+        else:
+            low = middle + 1
+    return f"Элемента {item} нет в списке"
+
+
+print(binary_search_2(a, 7))
+print(a)
